@@ -25,6 +25,16 @@ public class SpringbootbuildingblocksApplication {
 	 * ResourceBundleMessageSource(); messageSource.setBasename("messages"); return
 	 * messageSource; }
 	 */
-	
-
+	@Bean
+	public LocaleResolver localResolver() {
+		AcceptHeaderLocaleResolver accepthResolver = new AcceptHeaderLocaleResolver();
+		accepthResolver.setDefaultLocale(Locale.US);
+		return accepthResolver;
+	}
+	@Bean
+	public ResourceBundleMessageSource messageSource() {
+		ResourceBundleMessageSource messageSou = new ResourceBundleMessageSource();
+		messageSou.setBasename("messages");
+		return messageSou;
+	}
 }

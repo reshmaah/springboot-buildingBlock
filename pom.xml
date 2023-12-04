@@ -97,12 +97,17 @@
 		  <groupId>io.micrometer</groupId>
 		  <artifactId>micrometer-registry-jmx</artifactId>
 		  <version>1.2.0</version>
-		</dependency>	
+		</dependency>
 		<dependency>
-		  <groupId>io.micrometer</groupId>
-		  <artifactId>micrometer-registry-appoptics</artifactId>
-		  <version>1.2.0</version>
-		</dependency>										      	
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-appoptics</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>									      	
 	</dependencies>
 
 	<build>
