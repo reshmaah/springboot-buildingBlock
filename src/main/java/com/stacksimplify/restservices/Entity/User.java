@@ -24,7 +24,8 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "This model is to create a user")
 @Entity
 @Table(name = "user")
-@JsonFilter(value="UserFiler")
+
+//@JsonFilter(value="UserFiler") - used for mappingjacksoneValue filtering
 //@JsonIgnoreProperties({"firstname", "lastname"})  -- Static Filtering @JsonIgnore
 //@JsonFilter(value = "userFilter")  -- Used for MappingJacksonValue filtering section
 public class User extends ResourceSupport {
