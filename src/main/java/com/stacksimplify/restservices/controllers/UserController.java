@@ -33,6 +33,7 @@ import com.stacksimplify.restservices.services.UserService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 //Controller -
 @Api(tags = "User Management RESTful Services", value = "UserController", description = "Controller for User Management Service")
@@ -54,13 +55,14 @@ public class UserController {
 			return userservice.getAllUsers();
 			
 		}
+	@ApiOperation(value="Create new USer")
 	//CreateUser
 	//RequestBody
 	//PostMapping
 	@PostMapping
 	//@PetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<Void> createUser(@Valid @RequestBody User user, UriComponentsBuilder builder){
+	public ResponseEntity<Void> createUser(@ApiParam(" USerinformation to create new user")@Valid @RequestBody User user, UriComponentsBuilder builder){
 		
 		try {
 		 user= userservice.createUser(user);
@@ -77,10 +79,12 @@ public class UserController {
 	}
 	//getUserById
 	@GetMapping("/{id}")
-	public Optional<User> getUserById(@PathVariable("id") @Min(1) Long id) 
+	@ApiOperation(value="User Details")
+	public User getUserById(@PathVariable("id") @Min(1) Long id) 
 	{
 		try {
-		return userservice.getUserById(id);
+		Optional<User> optionaluser = userservice.getUserById(id);
+		return optionaluser.get();
 		} catch(UserNotFoundException ex) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage());
 		}
